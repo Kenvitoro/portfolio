@@ -4,6 +4,7 @@ import logo from "../../assets/images/Klogo.png"
 import "./index.scss"
 import AnimatedLetters from "../animatedLetters/index"
 import Logo from "../logo";
+import Loader from "react-loaders";
 
 
 const Home = () =>{
@@ -25,6 +26,7 @@ const Home = () =>{
 
 
     return (
+      <>
       <div className="container home-page">
         <div className="text-zone">
           <h1>
@@ -53,6 +55,12 @@ const Home = () =>{
         </div>
         <Logo></Logo>
       </div>
+
+
+      <Loader type="pacman"/>
+
+      </>
+      
     )
 }
 
