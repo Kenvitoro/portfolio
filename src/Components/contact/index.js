@@ -3,6 +3,7 @@ import AnimatedLetters from "../animatedLetters/index"
 import { useEffect, useRef, useState } from "react";
 import Loader from "react-loaders";
 import emailjs from "@emailjs/browser";
+import { MapContainer, TileLayer, Marker } from "react-leaflet";
 
 
 
@@ -42,54 +43,91 @@ const Contact = () =>{
             })
          }
     
-    return(
-        <>
-         <Loader type="pacman"/>
+    return (
+      <>
+        <Loader type="pacman" />
         <div className=" container contact-page">
-            <div className="text-zone">
-                <h1>
-                    <AnimatedLetters
-                    letterClass={letterClass}
-                    strArray={["C","o","n","t","a","c"," ","m","e",]}
-                    idx={15}
-                    />
-                </h1>
-                <p>
-                    If you have a request or question, don't hesitate to contact me using the form below. 
-                </p>
+          <div className="text-zone">
+            <h1>
+              <AnimatedLetters
+                letterClass={letterClass}
+                strArray={['C', 'o', 'n', 't', 'a', 'c', ' ', 'm', 'e']}
+                idx={15}
+              />
+            </h1>
+            <p>
+              If you have a request or question, don't hesitate to contact me
+              using the form below.
+            </p>
 
-                <div className="contact-form">
-            <form ref={refForm} onSubmit={sendEmail}>
+            <div className="contact-form">
+              <form ref={refForm} onSubmit={sendEmail}>
                 <ul>
-                    <li className="half">
-                        <input type="text" name="name" placeholder="Name" required/>
-                    </li>
-                    <li className="half">
-                        <input type="email" name="email" placeholder="Email" required/>
-                    </li>
-                    <li>
-                        <input type="text" name="Subject" placeholder="Subject" required/>
-                    </li>
-                    <li>
-                        <textarea placeholder="Message " name="message" required></textarea>
-                    </li>
-                    <li>
-                        <input type="submit" className="flat-button" value="SEND"/>
-                    </li>
-
+                  <li className="half">
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder="Name"
+                      required
+                    />
+                  </li>
+                  <li className="half">
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Email"
+                      required
+                    />
+                  </li>
+                  <li>
+                    <input
+                      type="text"
+                      name="Subject"
+                      placeholder="Subject"
+                      required
+                    />
+                  </li>
+                  <li>
+                    <textarea
+                      placeholder="Message "
+                      name="message"
+                      required
+                    ></textarea>
+                  </li>
+                  <li>
+                    <input type="submit" className="flat-button" value="SEND" />
+                  </li>
                 </ul>
-            </form>
-
-        </div>
-
+              </form>
             </div>
-            
+          </div>
+
+          
+
+          <div className="map-wrap">
+          <div className="info-map">
+            Kenneth Mora 
+            <br/>
+            Nicaragua
+            <br/>
+            RPT. San Patricio
+            <br/>
+           <span>Andreskmora@gmail.com</span>   
+          </div>
+
+
+          <MapContainer center={[12.114006523808563, -86.3124567810393]} zoom={13}>
+                <TileLayer url='https://tile.openstreetmap.org/{z}/{x}/{y}.png'/>
+                <Marker position ={[12.114006523808563, -86.3124567810393]}>
+
+                </Marker>
+            </MapContainer>
+
+          </div>
+
+           
         </div>
-
-        
-
-       
-        </>
+      </>
     )
 }
 
